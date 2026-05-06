@@ -1,8 +1,42 @@
-# QA QC & Basic Kmer stats
+# QA QC & Basic Kmer stats 
 
 * basic QC: seqkit stats per sample → merge into Read_Lengths.txt 
+
 * run genomescope2 + smudgeplot pipeline (FastK → Histex → GS2 → smudgeplot) 
 * extract GS2 metrics (het, haploid size, unique content) into .info files 
+
+
+
+Outputs:
+
+Assembly inputs:
+
+| Sample  | Ploidy | Group                | HiFi   | HiFiLength | HiC      | Name          | Color   | HapCoverage |
+| ------- | ------ | -------------------- | ------ | ---------- | -------- | ------------- | ------- | ----------- |
+| HART001 | 2      | A. altilis 2N        | 59.32  | 11206.3    | 50.46    | Maafala       | #0072B2 | 29.66       |
+| HART030 | 2      | A. altilis 2N        | 96.64  | 18338.2    | 17.63    | Huero         | #0072B2 | 48.32       |
+| HART050 | 2      | A. altilis 2N        | 38.96  | 17753.1    | 18.07    | Kukumu tasi   | #0072B2 | 19.48       |
+| HART069 | 2      | A. altilis 2N        | 72.95  | 12674.4    | 64.45    | Ulu Fiti      | #0072B2 | 36.475      |
+| HART032 | 3      | A. altilis 3N        | 88.25  | 15382.2    | 26.43    | Hamoa         | #56B4E9 | 29.41667    |
+| HART033 | 3      | A. altilis 3N        | 139.76 | 14764.85   | 36.96617 | Patara        | #56B4E9 | 46.58667    |
+| HART038 | 3      | A. altilis 3N        | 42.63  | 18956.6    | 29.35    | Lemai         | #56B4E9 | 14.21       |
+| ZZ3     | 2      | A. altilis hybrid 2N | 29.22  | 18949.4    | 0        | Ulu hamoa     | #D55E00 | 14.61       |
+| ZZ7     | 2      | A. altilis hybrid 2N | 28.6   | 20738.2    | 0        | Ulu afa elise | #D55E00 | 14.3        |
+| ZZ9     | 2      | A. altilis hybrid 2N | 30.02  | 19115.8    | 0        | Ulu afa       | #D55E00 | 15.01       |
+| HART046 | 3      | A. altilis hybrid 3N | 111.19 | 14132.65   | 37.7     | Midolab       | #E69F00 | 37.06333    |
+| HART049 | 3      | A. altilis hybrid 3N | 92.85  | 8248.15    | 3.47     | Meinpohnsakar | #E69F00 | 30.95       |
+| HART053 | 3      | A. altilis hybrid 3N | 78.23  | 15006      | 32.63    | Nahnmwal      | #E69F00 | 26.07667    |
+| H6      | 4      | A. altilis hybrid 4N | 87.41  | 15742.8    | 35.28212 | Meikole       | #009E73 | 21.8525     |
+
+And both genomescope2 kmer spectra and ploidy smudgeplots:
+
+![smudgeplots](/imgs/Combined_Histos_Smudges.png)
+
+
+
+___
+
+
 
 Read lengths:
 
