@@ -1,8 +1,8 @@
-# Artocarpus pangenomics (assembly → pangenomics)
+# *Artocarpus altilis* pangenomics (assembly → pangenomics → domestication history)
 
-End-to-end assembly and intraspecific pangenomics for *Artocarpus*, spanning genome QC, assembly, and pangenome graph inference. 
+End-to-end assembly and intraspecific pangenomics for *Artocarpus*, spanning genome QC, assembly, pangenome graph inference, and tracing domestication history with related species. . 
 
-Core sample metadata live in `samples.txt`.
+Core sample metadata live in `samples.info`, with read info and input for [puzzler](https://github.com/merondun/puzzler) assembly in `samples.tsv`.
 
 ## Directory map
 
@@ -12,7 +12,7 @@ Core sample metadata live in `samples.txt`.
 
 ## Overview
 
-This project generated collapsed haploid assemblies for 13 novel breadfruit accessions - in addition to 1 breadfruit genome assembled previously for a [comparative genomics paper](https://github.com/merondun/artocarpus_comparative_genomics), providing 14 breadfruit chromosome-level genomes.
+This project generates collapsed haploid assemblies for 13 novel breadfruit accessions - in addition to 1 breadfruit genome assembled previously for a [comparative genomics paper](https://github.com/merondun/artocarpus_comparative_genomics), providing 14 breadfruit chromosome-level genomes.
 
 These 14 cultivars are divided into a few 'ploidy groups', based on ploidy and morphological variation. 
 
