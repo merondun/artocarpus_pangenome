@@ -8,6 +8,7 @@ Core sample metadata live in `samples.txt`.
 
 - [**01_qa_qc_genomescope/**](01_qa_qc_genomescope/) — read/QC and GenomeScope summaries for genome size/heterozygosity context.
 - [**02_genome_assembly/**](02_genome_assembly/) — assembly generation and post-processing notes/scripts.
+- [**03_whole genome alignments/**](03_whole_genome_alignments/) — initial dotplots against a single reference. 
 
 ## Overview
 
@@ -44,6 +45,8 @@ These groups largely follow the morphological classifications from [Jones et al 
 
 ![Jones et al](/imgs/Jones_etal_2013.png)
 
+
+
 Color palette:
 
 | Group                | Color   |
@@ -53,6 +56,8 @@ Color palette:
 | A. altilis hybrid 2N | #D55E00 |
 | A. altilis hybrid 3N | #E69F00 |
 | A. altilis hybrid 4N | #009E73 |
+
+
 
 ## Qs & Cs
 
