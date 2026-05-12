@@ -1,6 +1,6 @@
-# *Artocarpus altilis* pangenomics (assembly → pangenomics → domestication history)
+# *Artocarpus altilis* evolutionary genomics (assembly → pangenomics → domestication history)
 
-End-to-end assembly and intraspecific pangenomics for *Artocarpus*, spanning genome QC, assembly, pangenome graph inference, and tracing domestication history with related species. . 
+End-to-end assembly and intraspecific pangenomics for *Artocarpus altilis*, spanning genome QC, assembly, pangenome graph inference, and tracing domestication history with related species.
 
 Core sample metadata live in `samples.info`, with read info and input for [puzzler](https://github.com/merondun/puzzler) assembly in `samples.tsv`.
 
@@ -9,6 +9,8 @@ Core sample metadata live in `samples.info`, with read info and input for [puzzl
 - [**01_qa_qc_genomescope/**](01_qa_qc_genomescope/) — read/QC and GenomeScope summaries for genome size/heterozygosity context.
 - [**02_genome_assembly/**](02_genome_assembly/) — assembly generation and post-processing notes/scripts.
 - [**03_whole genome alignments/**](03_whole_genome_alignments/) — initial dotplots against a single reference. 
+- [**04_pangenome_inputs/**](04_pangenome_inputs/) — files used for 14-accession primary haplotype pangenome.  
+
 
 ## Overview
 
@@ -62,3 +64,6 @@ Color palette:
 ## Qs & Cs
 
 Questions or comments reach out to Justin Merondun heritabilities [@] gmail.com or make an issue here. 
+
+
+

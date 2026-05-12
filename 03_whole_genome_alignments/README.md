@@ -54,6 +54,8 @@ zip wga_dotplots_hart001.zip pafs/*pdf
 
 Initial dotplots across all 14 accessions against sample HART001 identifies a consistent inversion on Chr07, which after closer inspection of the HiC heat map for HART001, is a putative misassembly. For consistency in this paper, I will reverse complement that contig (confirmed it is a long arm gapped with >50 Ns), so that we have a consistent Chr07 direction. 
 
+![HART001_misassembly](/imgs/HART001_misassembly_inversion.png)
+
 * isolate Chr07 second contig around big N-gap (≥51 Ns) → split into part1 / gap / part2 
 
 * reverse‑complement part2 → rebuild Chr07 with inverted arm (p1 + gap + p2_rc) 
@@ -130,5 +132,11 @@ seqkit fx2tab -n -l HART001.Chr07sub.fa | grep -w '^Chr07'
 seqkit fx2tab -n -l Chr07.repl.fa
 ```
 
+## HART069 "Butterfly"
 
+Sample HART069 looks like it has a truncated Chr09 and an extra large Chr022, which appears as a misassembly in the dotplot against HART001. However, the juicer contact map for this sample does not show a straight story: instead it shows a potential chromosome-arm duplication, as it seems that the portion of chr09 missing ALSO matches chr22. 
+
+This could require a phased genome approach to resolve, but archiving this to remember any issues with chr09 or chr22 in the future. 
+
+![HART069 map](/imgs/HART069_inversion_chr22_chr09.png)
 
