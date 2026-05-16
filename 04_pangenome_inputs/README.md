@@ -32,18 +32,22 @@ outdir=/project/coffea_pangenome/Breadfruit_Pangenome/01_assemblies
 
 mkdir -p "$outdir"
 
-for chr in $(seq -w 1 28); do
-    outfile="$outdir/Chr${chr}.fa"
+for chrnum in $(seq 1 28); do
+    chr=$(printf "Chr%02d" "$chrnum")
+    outfile="$outdir/${chr}.fa"
     : > "$outfile"
 
-    for fa in "$indir"/*.chr.fa; do
-        sample=$(basename "$fa" .chr.fa)
+    for fa in "$indir"/*.fa; do
+        sample=$(basename "$fa" .fa)
 
-        awk -v chr="Chr${chr}" -v sample="$sample" '
+        awk -v chr="$chr" -v sample="$sample" '
             /^>/ {
                 header=$0
                 sub(/^>/, "", header)
-                if (header ~ chr) {
+
+                split(header, fields, /[[:space:]]+/)
+
+                if (fields[1] == chr) {
                     print ">" sample "#" chr
                     keep=1
                 } else {
@@ -55,7 +59,8 @@ for chr in $(seq -w 1 28); do
         ' "$fa" >> "$outfile"
     done
 
-    gzip -f "$outfile"
+    bgzip -f "$outfile";
+    samtools faidx "$outfile.gz" 
 done
 ```
 
