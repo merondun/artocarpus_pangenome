@@ -8,8 +8,11 @@ Core sample metadata live in `samples.info`, with read info and input for [puzzl
 
 - [**01_qa_qc_genomescope/**](01_qa_qc_genomescope/) — read/QC and GenomeScope summaries for genome size/heterozygosity context.
 - [**02_genome_assembly/**](02_genome_assembly/) — assembly generation and post-processing notes/scripts.
-- [**03_whole genome alignments/**](03_whole_genome_alignments/) — initial dotplots against a single reference. 
-- [**04_pangenome_inputs/**](04_pangenome_inputs/) — files used for 14-accession primary haplotype pangenome.  
+- [**03_repeats/**](03_repeats/) — annotating TEs and other repeats. 
+
+- [**04_whole genome alignments/**](04_whole_genome_alignments/) — initial dotplots against a single reference. 
+- [**05_pangenome_inputs/**](05_pangenome_inputs/) — files used for 14-accession primary haplotype pangenome.  
+- [**06_reference_based_ancestry/**](06_reference_based_ancestry/) — reference-based approach against HART050 to infer within-cultivar ancestry.  
 
 
 ## Overview
