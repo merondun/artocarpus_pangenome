@@ -1,4 +1,4 @@
-# Whole genome alignments
+# 04_whole_genome_alignments/
 
 - confirm broad-scale chromosomal synteny and orientation across all accessions using whole‑genome dotplots (HART001 as reference) 
 
@@ -139,4 +139,3 @@ Sample HART069 looks like it has a truncated Chr09 and an extra large Chr022, wh
 This could require a phased genome approach to resolve, but archiving this to remember any issues with chr09 or chr22 in the future. 
 
 ![HART069 map](/imgs/HART069_inversion_chr22_chr09.png)
-

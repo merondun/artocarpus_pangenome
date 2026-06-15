@@ -1,0 +1,127 @@
+Sample,Group,ClassSimple,Proportion
+HART001,A. altilis 2N,DNA,4.05410667543311
+HART001,A. altilis 2N,LINE,0.386956017241516
+HART001,A. altilis 2N,LTR,41.9504284440374
+HART001,A. altilis 2N,Non-Repeat,31.9577323343951
+HART001,A. altilis 2N,Other (Simple Repeat, Microsatellite, RNA),2.32700681768689
+HART001,A. altilis 2N,Penelope,0
+HART001,A. altilis 2N,Rolling Circle,0.415392711113533
+HART001,A. altilis 2N,SINE,0.00150574895139372
+HART001,A. altilis 2N,Unclassified,19.8353939863873
+HART030,A. altilis 2N,DNA,3.87499034872072
+HART030,A. altilis 2N,LINE,0.40233098614038
+HART030,A. altilis 2N,LTR,40.2169000893221
+HART030,A. altilis 2N,Non-Repeat,32.1262546216264
+HART030,A. altilis 2N,Other (Simple Repeat, Microsatellite, RNA),2.3135958761111
+HART030,A. altilis 2N,Penelope,0
+HART030,A. altilis 2N,Rolling Circle,0.896199859119864
+HART030,A. altilis 2N,SINE,0.00115946252615502
+HART030,A. altilis 2N,Unclassified,20.9240663616291
+HART050,A. altilis 2N,DNA,3.87574628921678
+HART050,A. altilis 2N,LINE,0.324784698719861
+HART050,A. altilis 2N,LTR,42.4492927265337
+HART050,A. altilis 2N,Non-Repeat,31.3736340901856
+HART050,A. altilis 2N,Other (Simple Repeat, Microsatellite, RNA),2.17688425898544
+HART050,A. altilis 2N,Penelope,0
+HART050,A. altilis 2N,Rolling Circle,0.426077865953839
+HART050,A. altilis 2N,SINE,0.00174451538418687
+HART050,A. altilis 2N,Unclassified,20.2311484169788
+HART069,A. altilis 2N,DNA,4.14517488764059
+HART069,A. altilis 2N,LINE,0.346251661122598
+HART069,A. altilis 2N,LTR,42.4113473341437
+HART069,A. altilis 2N,Non-Repeat,32.0419144079367
+HART069,A. altilis 2N,Other (Simple Repeat, Microsatellite, RNA),2.34085930629556
+HART069,A. altilis 2N,Penelope,0
+HART069,A. altilis 2N,Rolling Circle,0.411282333532214
+HART069,A. altilis 2N,SINE,0.00349182951318949
+HART069,A. altilis 2N,Unclassified,19.1121239733558
+HART032,A. altilis 3N,DNA,3.92130896712342
+HART032,A. altilis 3N,LINE,0.411735161539378
+HART032,A. altilis 3N,LTR,40.8796620330683
+HART032,A. altilis 3N,Non-Repeat,32.0290106930647
+HART032,A. altilis 3N,Other (Simple Repeat, Microsatellite, RNA),2.02516559202621
+HART032,A. altilis 3N,Penelope,0
+HART032,A. altilis 3N,Rolling Circle,0.783240320923572
+HART032,A. altilis 3N,SINE,0.00613351562130296
+HART032,A. altilis 3N,Unclassified,20.7305307971738
+HART033,A. altilis 3N,DNA,3.63566742308408
+HART033,A. altilis 3N,LINE,0.303343641568016
+HART033,A. altilis 3N,LTR,39.9781777186127
+HART033,A. altilis 3N,Non-Repeat,32.9608492697916
+HART033,A. altilis 3N,Other (Simple Repeat, Microsatellite, RNA),2.6595544859417
+HART033,A. altilis 3N,Penelope,0
+HART033,A. altilis 3N,Rolling Circle,0.464077224028348
+HART033,A. altilis 3N,SINE,0.00336022837011582
+HART033,A. altilis 3N,Unclassified,21.0874280493724
+HART038,A. altilis 3N,DNA,4.11117115833115
+HART038,A. altilis 3N,LINE,0.252900207354397
+HART038,A. altilis 3N,LTR,40.665893485633
+HART038,A. altilis 3N,Non-Repeat,31.9389625556011
+HART038,A. altilis 3N,Other (Simple Repeat, Microsatellite, RNA),2.24462963040512
+HART038,A. altilis 3N,Penelope,0
+HART038,A. altilis 3N,Rolling Circle,0.411153325511805
+HART038,A. altilis 3N,SINE,0.00216220101110547
+HART038,A. altilis 3N,Unclassified,21.3955949870009
+ZZ3,A. altilis hybrid 2N,DNA,4.96167122131703
+ZZ3,A. altilis hybrid 2N,LINE,0.502255398552436
+ZZ3,A. altilis hybrid 2N,LTR,37.5833102538812
+ZZ3,A. altilis hybrid 2N,Non-Repeat,33.4669502331327
+ZZ3,A. altilis hybrid 2N,Other (Simple Repeat, Microsatellite, RNA),2.1869579419266
+ZZ3,A. altilis hybrid 2N,Penelope,0
+ZZ3,A. altilis hybrid 2N,Rolling Circle,0.380811469757533
+ZZ3,A. altilis hybrid 2N,SINE,0.00156243815269217
+ZZ3,A. altilis hybrid 2N,Unclassified,21.5479961347197
+ZZ7,A. altilis hybrid 2N,DNA,4.56570580846835
+ZZ7,A. altilis hybrid 2N,LINE,0.389552951414567
+ZZ7,A. altilis hybrid 2N,LTR,39.1648636464824
+ZZ7,A. altilis hybrid 2N,Non-Repeat,33.6306778250602
+ZZ7,A. altilis hybrid 2N,Other (Simple Repeat, Microsatellite, RNA),2.09207927545957
+ZZ7,A. altilis hybrid 2N,Penelope,0
+ZZ7,A. altilis hybrid 2N,Rolling Circle,0.407323792763339
+ZZ7,A. altilis hybrid 2N,SINE,0.00146466932066427
+ZZ7,A. altilis hybrid 2N,Unclassified,20.6290448382748
+ZZ9,A. altilis hybrid 2N,DNA,4.19947247532441
+ZZ9,A. altilis hybrid 2N,LINE,0.418766280168399
+ZZ9,A. altilis hybrid 2N,LTR,38.546234783708
+ZZ9,A. altilis hybrid 2N,Non-Repeat,33.6297410913126
+ZZ9,A. altilis hybrid 2N,Other (Simple Repeat, Microsatellite, RNA),2.30545431760574
+ZZ9,A. altilis hybrid 2N,Penelope,0
+ZZ9,A. altilis hybrid 2N,Rolling Circle,0.403342854552337
+ZZ9,A. altilis hybrid 2N,SINE,0.00605308873553635
+ZZ9,A. altilis hybrid 2N,Unclassified,21.2016428081553
+HART046,A. altilis hybrid 3N,DNA,4.25177655970739
+HART046,A. altilis hybrid 3N,LINE,0.441334357795757
+HART046,A. altilis hybrid 3N,LTR,38.6676327166052
+HART046,A. altilis hybrid 3N,Non-Repeat,33.0825222288446
+HART046,A. altilis hybrid 3N,Other (Simple Repeat, Microsatellite, RNA),3.11251446339009
+HART046,A. altilis hybrid 3N,Penelope,0
+HART046,A. altilis hybrid 3N,Rolling Circle,0.684779681962888
+HART046,A. altilis hybrid 3N,SINE,0.0017430539279108
+HART046,A. altilis hybrid 3N,Unclassified,20.572472009913
+HART049,A. altilis hybrid 3N,DNA,4.38843455589289
+HART049,A. altilis hybrid 3N,LINE,0.410620708313566
+HART049,A. altilis hybrid 3N,LTR,39.2983010885835
+HART049,A. altilis hybrid 3N,Non-Repeat,32.7991651679563
+HART049,A. altilis hybrid 3N,Other (Simple Repeat, Microsatellite, RNA),2.69171541700422
+HART049,A. altilis hybrid 3N,Penelope,0
+HART049,A. altilis hybrid 3N,Rolling Circle,0.539269513379527
+HART049,A. altilis hybrid 3N,SINE,0.00542657992925274
+HART049,A. altilis hybrid 3N,Unclassified,20.6546619444375
+HART053,A. altilis hybrid 3N,DNA,4.0823950246845
+HART053,A. altilis hybrid 3N,LINE,0.308617332334953
+HART053,A. altilis hybrid 3N,LTR,39.489404403049
+HART053,A. altilis hybrid 3N,Non-Repeat,33.001034560087
+HART053,A. altilis hybrid 3N,Other (Simple Repeat, Microsatellite, RNA),2.41648450431967
+HART053,A. altilis hybrid 3N,Penelope,0
+HART053,A. altilis hybrid 3N,Rolling Circle,0.570182353359152
+HART053,A. altilis hybrid 3N,SINE,0.00157682950758605
+HART053,A. altilis hybrid 3N,Unclassified,20.7856829635179
+H6,A. altilis hybrid 4N,DNA,4.56019707726998
+H6,A. altilis hybrid 4N,LINE,0.375659268104826
+H6,A. altilis hybrid 4N,LTR,40.1513125940794
+H6,A. altilis hybrid 4N,Non-Repeat,32.9865591908239
+H6,A. altilis hybrid 4N,Other (Simple Repeat, Microsatellite, RNA),2.32514390732547
+H6,A. altilis hybrid 4N,Penelope,0
+H6,A. altilis hybrid 4N,Rolling Circle,0.41200172746483
+H6,A. altilis hybrid 4N,SINE,0.00220220883751367
+H6,A. altilis hybrid 4N,Unclassified,20.0065058997003

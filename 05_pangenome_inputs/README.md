@@ -1,8 +1,10 @@
-# Prepare Pangenome Inputs
+# 05_pangenome_inputs/
+
+* Generate input files for pangenome creation
 
 For the pangenome, we will first start at the chromosome-level and build a collapsed pangenome for **chrN** using the 14 collapsed assemblies. 
 
-First, rename the chrs so that they include sample and chromosome IDs, following the [panSN spec](https://github.com/pangenome/PanSN-spec). We will add '1' for each haplotype ID since these are collapsed primary assemblies. 
+First, rename the chrs so that they include sample and chromosome IDs, following the [panSN spec](https://github.com/pangenome/PanSN-spec) for non-haplotype phased:
 
 for `Chr01`, looks like:
 
@@ -100,3 +102,4 @@ there are 14 chromosomes for Chr26
 there are 14 chromosomes for Chr27
 there are 14 chromosomes for Chr28
 ```
+
