@@ -8,7 +8,13 @@
 
 Outputs, chromosomal synteny among *Artocarpus altilis* : 
 
-![dotplots](/imgs/20260505_wga.png)
+![dotplots](/imgs/dotplots.png)
+
+
+
+BUSCO-based whole genome alignments : 
+
+![chromsyn](/imgs/busco_alignments.png)
 
 ___
 
@@ -49,6 +55,132 @@ Submit:
 cat Samples.list  | xargs -I {} sbatch -J wga_{} 01_WGA_HART001Ref.sh {}
 zip wga_dotplots_hart001.zip pafs/*pdf
 ```
+
+## BUSCO-level Synteny
+
+This workflow runs chromsyn to place BUSCO genes onto chromosomes and summarize synteny using BUSCO anchors. It generates plotting inputs (BUSCO tables, telomere tracks, and repeat/telomere-window scores), merges them into a chromsyn fig. 
+
+Files:
+
+```
+cat Fastas.list 
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/H6.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART001.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART030.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART032.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART033.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART038.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART046.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART049.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART050.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART053.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART063.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART067.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/HART069.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/ZZ3.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/ZZ7.chr.fa
+/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/unmasked/ZZ9.chr.fa
+```
+
+Run the chromsyn workflow:
+
+```bash
+#!/bin/bash
+
+#SBATCH --time=1-00:00:00   
+#SBATCH --nodes=1  
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=96Gb
+#SBATCH --partition=ceres
+#SBATCH --account=coffea_pangenome
+
+t=24
+
+# Check if the correct number of arguments is provided
+set -euo pipefail
+
+#module load miniconda
+#source activate chromsyn
+
+FASTA="${1:?usage: $0 <FASTA>}"
+TARGET=$(basename ${FASTA} .chr.fa)
+FILE=$(realpath ${FASTA})
+WD=/project/coffea_pangenome/Artocarpus/Pangenome_Paper/busco_synteny
+GENOMES=/project/coffea_pangenome/Artocarpus/Pangenome_Paper/assemblies/softmasked
+
+echo "Working on ${TARGET}, file ${FASTA}"
+export PYTHONWARNINGS="ignore::SyntaxWarning"
+
+# Prep busco db 
+BUSCO_DB=/project/coffea_pangenome/Software/Merondun/busco_downloads
+LINEAGE=embryophyta_odb12
+if [ -d "${BUSCO_DB}/lineages/${LINEAGE}" ]; then
+        echo "BUSCO db ${LINEAGE} already present at ${BUSCO_DB}/lineages/${LINEAGE} – skipping download"
+else
+        busco --download ${LINEAGE} --download_path ${BUSCO_DB}
+fi
+
+mkdir -p ${WD}/work ${WD}/plotting_inputs
+cd ${WD}/work
+
+# Generate inputs
+TELO_DIR=/project/coffea_pangenome/Software/Merondun/telociraptor/code
+if [ -f ${TARGET}.chr.telomeres.tdt]; then
+        echo "Telociraptor output exists for ${TARGET} – skipping"
+else
+        python ${TELO_DIR}/telociraptor.py seqin=${FILE} basefile=${FILE} i=-1 tweak=F telonull=T
+fi
+
+# busco 
+if [ -f ${TARGET}.busco5.tsv]; then
+        echo "BUSCO already ran on ${TARGET} - skipping"
+else
+        busco -f -o run_${TARGET} -i ${FILE} -l ${BUSCO_DB}/lineages/${LINEAGE} --cpu ${t} -m genome
+        cp -v run_${TARGET}/run_${LINEAGE}/full_table.tsv ${TARGET}.busco5.tsv
+        rm -rf run_${TARGET}*
+fi
+
+# repeat scores
+if [ -f ${TARGET}.tidk.tsv]; then
+        echo "TIDK already ran on ${TARGET} - skipping"
+else
+        tidk search --dir search --output ${TARGET} -s AACCCT ${FILE}
+        cp -v search/${TARGET}_telomeric_repeat_windows.tsv ${TARGET}.tidk.tsv
+fi
+
+# Copy outputs
+cp ${TARGET}.tidk.tsv ${TARGET}.chr.gaps.tdt ${TARGET}.busco5.tsv ${TARGET}.chr.telomeres.tdt ${TARGET}.chr.contigs.tdt ${WD}/plotting_inputs/
+```
+
+Merge the outputs and plot:
+
+```bash
+#!/bin/bash
+
+#SBATCH --time=0-06:00:00   
+#SBATCH --nodes=1  
+#SBATCH --cpus-per-task=20
+#SBATCH --mem=64Gb
+#SBATCH --partition=ceres
+#SBATCH --account=coffea_pangenome
+
+WD=/project/coffea_pangenome/Artocarpus/Pangenome_Paper/busco_synteny
+cd ${WD}
+
+> busco.fofn > gaps.fofn > sequences.fofn > tidk.fofn
+
+for i in $(cat Samples.list); do 
+    echo -e "${i} ${WD}/plotting_inputs/${i}.busco5.tsv" >> busco.fofn
+    echo -e "${i} ${WD}/plotting_inputs/${i}.chr.gaps.tdt" >> gaps.fofn
+    echo -e "${i} ${WD}/plotting_inputs/${i}.chr.telomeres.tdt" >> sequences.fofn
+    echo -e "${i} ${WD}/plotting_inputs/${i}.tidk.tsv" >> tidk.fofn
+done 
+
+Rscript ~/symlinks/software/chromsyn/chromsyn.R labelsize=1.5 opacity=0.4 pdfheight=8 pdfwidth=8
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf chromsyn.pdf
+```
+
+
 
 ## Invert Chr07 on HART001
 
@@ -139,3 +271,4 @@ Sample HART069 looks like it has a truncated Chr09 and an extra large Chr022, wh
 This could require a phased genome approach to resolve, but archiving this to remember any issues with chr09 or chr22 in the future. 
 
 ![HART069 map](/imgs/HART069_inversion_chr22_chr09.png)
+

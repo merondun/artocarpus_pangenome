@@ -25,13 +25,13 @@ Outputs: assemblies & statistics:
 
 Final HiC contact maps, pre- and post- juicer contacts, and merqury completeness and kmer spectra:
 
-![HiC and merqury](/imgs/20260501_contacts_compiled.png) 
+![HiC and merqury](/imgs/assembly_contacts.png) 
 
 
 
 Percent of assembly present in large scaffolds in an Nx plot:
 
-![Nx plot](/imgs/20260615_Nx_Plot.png)
+![Nx plot](/imgs/nx_plot.png)
 
 
 

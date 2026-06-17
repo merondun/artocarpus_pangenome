@@ -30,7 +30,7 @@ Assembly inputs:
 
 And both genomescope2 kmer spectra and ploidy smudgeplots:
 
-![smudgeplots](/imgs/Combined_Histos_Smudges.png)
+![smudgeplots](/imgs/smudge_genomescope.png)
 
 
 

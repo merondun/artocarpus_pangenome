@@ -7,7 +7,7 @@ Output:
 
 
 
-![repeats](/imgs/20260612_RepeatsHighLevelSummary.png)
+![repeats](/imgs/repeats.png)
 
 
 
