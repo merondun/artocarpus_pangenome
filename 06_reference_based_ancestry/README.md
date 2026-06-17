@@ -544,7 +544,7 @@ fi
 
 ## ADMIXTOOLS
 
-F4 statistics:
+Estimate D and f4 statistics with admixtools, assessing excess allele sharing with mariannensis vs camansi: 
 
 ```R
 #install.packages("devtools") # if "devtools" is not installed already
@@ -554,7 +554,7 @@ library(admixtools)
 library(tidyverse)
 
 prefix <- "Full"
-
+my_f2_dir <- "admix_f2"
 fam <- read_table(
   paste0(prefix, ".fam"),
   col_names = c("FID", "IID", "PAT", "MAT", "SEX", "PHENO"),
@@ -605,8 +605,8 @@ for (cultivar in cultivars) {
       ci_low = est - 1.96 * se,
       ci_high = est + 1.96 * se,
       interpretation = case_when(
-        est > 0 ~ "mariannensis-like",
-        est < 0 ~ "camansi-like",
+        est > 0 ~ "camansi-like",
+        est < 0 ~ "mariannensis-like",
         TRUE ~ "balanced"
       )
     )
@@ -617,49 +617,21 @@ d_res <- bind_rows(d_res) %>%
 
 write_tsv(d_res, "D_HART063_HART067_cultivar_HART061.tsv")
 
-}
-d_res <- map_dfr(
-  cultivars,
-  \(cultivar) {
-    f4(
-      prefix,
-      pop1 = "HART063",
-      pop2 = "HART067",
-      pop3 = cultivar,
-      pop4 = "HART061",
-      f4mode = FALSE
-    ) %>%
-      mutate(cultivar = cultivar)
-  }
-) %>%
-  mutate(
-    ci_low = est - 1.96 * se,
-    ci_high = est + 1.96 * se,
-    interpretation = case_when(
-      est > 0 ~ "mariannensis-like",
-      est < 0 ~ "camansi-like",
-      TRUE ~ "balanced"
-    )
-  ) %>%
-  arrange(est)
-
-write_tsv(d_res, "D_HART063_HART067_cultivar_HART061.tsv")
-
-ggplot(
-  d_res,
-  aes(
-    x = est,
-    y = fct_reorder(cultivar, est)
-  )
-) +
+md = read_tsv('~/artocarpus_pangenome/samples.info') %>% dplyr::select(ID = Sample, Name, Group, Color) %>% 
+  mutate(Shape = 21) 
+d_resg <- left_join(d_res,md %>% dplyr::rename(cultivar = ID))
+d_resg$cultivar <- factor(d_res$cultivar,levels=md$ID)
+p <- d_resg %>% 
+  ggplot(aes(x = est,y = fct_reorder(cultivar, est),fill=Group)) +
   geom_vline(xintercept = 0, linetype = 2) +
   geom_errorbarh(aes(xmin = ci_low, xmax = ci_high), height = 0) +
-  geom_point(size = 2.5) +
+  geom_point(size = 2.5,pch=21) +
+  scale_fill_manual(values = md$Color, breaks = md$Group) +
   labs(
-    x = "D(HART063, HART067; cultivar, HART061)",
+    x = "ABBA-BABA: D(camansi, mariannensis; cultivar, odoratissimus)",
     y = NULL
   ) +
-  theme_bw(base_size = 12) +
+  theme_bw(base_size = 11) +
   theme(
     panel.grid.major.y = element_blank(),
     panel.grid.minor = element_blank()
@@ -667,8 +639,10 @@ ggplot(
 
 ggsave(
   "D_HART063_HART067_cultivar_HART061.pdf",
+  p,
   width = 6,
   height = 4.5
 )
+
 ```
 
