@@ -1,5 +1,7 @@
 # *Artocarpus altilis* evolutionary genomics (assembly → pangenomics → domestication history)
 
+## Seond heading
+
 End-to-end assembly and intraspecific pangenomics for *Artocarpus altilis*, spanning genome QC, assembly, pangenome graph inference, and tracing domestication history with related species.
 
 Core sample metadata live in `samples.info`, with read info and input for [puzzler](https://github.com/merondun/puzzler) assembly in `samples.tsv`.
@@ -13,6 +15,8 @@ Core sample metadata live in `samples.info`, with read info and input for [puzzl
 - [**04_whole genome alignments/**](04_whole_genome_alignments/) — initial dotplots against a single reference. 
 - [**05_pangenome_inputs/**](05_pangenome_inputs/) — files used for 14-accession primary haplotype pangenome.  
 - [**06_reference_based_ancestry/**](06_reference_based_ancestry/) — reference-based approach against HART050 to infer within-cultivar ancestry.  
+- [**07_annotation/**](07_annotation/) — gene annotation.
+- [**08_gene_alignments/**](08_gene_alignments/) — gene-based whole genome pairwise alignments using JCVI. 
 
 
 ## Overview

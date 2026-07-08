@@ -1,0 +1,33 @@
+#	y,	xstart,	xend,	rotation,	color,	label,	va,	bed
+	0.94,	0.2,	0.95,	0,	,	HART001,	top,	HART001.bed
+	0.88,	0.2,	0.95,	0,	,	HART030,	top,	HART030.bed
+	0.82,	0.2,	0.95,	0,	,	HART050,	top,	HART050.bed
+	0.76,	0.2,	0.95,	0,	,	HART069,	top,	HART069.bed
+	0.71,	0.2,	0.95,	0,	,	HART032,	top,	HART032.bed
+	0.65,	0.2,	0.95,	0,	,	HART033,	top,	HART033.bed
+	0.59,	0.2,	0.95,	0,	,	HART038,	top,	HART038.bed
+	0.53,	0.2,	0.95,	0,	,	ZZ3,	top,	ZZ3.bed
+	0.47,	0.2,	0.95,	0,	,	ZZ7,	top,	ZZ7.bed
+	0.41,	0.2,	0.95,	0,	,	ZZ9,	top,	ZZ9.bed
+	0.35,	0.2,	0.95,	0,	,	HART046,	top,	HART046.bed
+	0.29,	0.2,	0.95,	0,	,	HART049,	top,	HART049.bed
+	0.24,	0.2,	0.95,	0,	,	HART053,	top,	HART053.bed
+	0.18,	0.2,	0.95,	0,	,	H6,	top,	H6.bed
+	0.12,	0.2,	0.95,	0,	,	HART063,	top,	HART063.bed
+	0.06,	0.2,	0.95,	0,	,	HART067,	bottom,	HART067.bed
+#	edges							
+e,	0,	1,	HART001.HART030.anchors.cols.simple					
+e,	1,	2,	HART030.HART050.anchors.cols.simple					
+e,	2,	3,	HART050.HART069.anchors.cols.simple					
+e,	3,	4,	HART069.HART032.anchors.cols.simple					
+e,	4,	5,	HART032.HART033.anchors.cols.simple					
+e,	5,	6,	HART033.HART038.anchors.cols.simple					
+e,	6,	7,	HART038.ZZ3.anchors.cols.simple					
+e,	7,	8,	ZZ3.ZZ7.anchors.cols.simple					
+e,	8,	9,	ZZ7.ZZ9.anchors.cols.simple					
+e,	9,	10,	ZZ9.HART046.anchors.cols.simple					
+e,	10,	11,	HART046.HART049.anchors.cols.simple					
+e,	11,	12,	HART049.HART053.anchors.cols.simple					
+e,	12,	13,	HART053.H6.anchors.cols.simple					
+e,	13,	14,	H6.HART063.anchors.cols.simple					
+e,	14,	15,	HART063.HART067.anchors.cols.simple					

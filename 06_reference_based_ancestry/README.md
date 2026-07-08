@@ -4,6 +4,22 @@ Reference-based approach calling SNPs against HART050 to infer DSuite allele sha
 
 Output:
 
+* D statistics inferring for each cultivar, if it is more related to mariannensis or camansi (top)
+
+* D stats examining for each 'early hybrid' individual if they are more related to mariannensis or modern cultivars (bottom)
+
+![d stats](/imgs/20260707_Dstats_combined.png)
+
+
+
+Also a neighbor net: 
+
+![neighbor net](/imgs/neighbornet.png) 
+
+
+
+Full ancestry results:
+
 ![ancestry](/imgs/ancestry.png)
 
 
@@ -463,8 +479,8 @@ gtp <- gt +
   geom_nodepoint(mapping=aes(subset=(as.numeric(label) >= 95)),col='black',fill='grey90',pch=23,size=0.75,show.legend=F)+
   geom_tippoint(aes(fill = Group, shape = Group),size=2)+
   geom_tiplab(aes(label = lab),align = FALSE,hjust=-0.25,size=3)+
-  scale_fill_manual(values = pcm$Color %>% setNames(pcm$Group)) +
-  scale_shape_manual(values = pcm$Shape %>% setNames(pcm$Group)) +  guides(fill=guide_legend(nrow=4,override.aes=list(shape=21)),
+  scale_fill_manual(values = md$Color %>% setNames(md$Group)) +
+  scale_shape_manual(values = md$Shape %>% setNames(md$Group)) +  guides(fill=guide_legend(nrow=4,override.aes=list(shape=21)),
                                                                            shape=guide_legend(nrow=5))+
   theme(legend.text = element_text(size = 8),legend.title = element_text(size = 10),
         legend.key.size = unit(0.2, "cm"),    legend.position = 'top') + 
@@ -594,10 +610,10 @@ for (cultivar in cultivars) {
   
   d_res[[cultivar]] <- f4(
     f2_blocks,
-    pop1 = "HART063",
+    pop1 = "HART061",
     pop2 = "HART067",
     pop3 = cultivar,
-    pop4 = "HART061",
+    pop4 = "HART063",
     f4mode = FALSE
   ) %>%
     mutate(
@@ -615,7 +631,7 @@ for (cultivar in cultivars) {
 d_res <- bind_rows(d_res) %>%
   arrange(est)
 
-write_tsv(d_res, "D_HART063_HART067_cultivar_HART061.tsv")
+write_tsv(d_res, "D_HART061_HART067_cultivar_HART063.tsv")
 
 md = read_tsv('~/artocarpus_pangenome/samples.info') %>% dplyr::select(ID = Sample, Name, Group, Color) %>% 
   mutate(Shape = 21) 
@@ -626,9 +642,10 @@ p <- d_resg %>%
   geom_vline(xintercept = 0, linetype = 2) +
   geom_errorbarh(aes(xmin = ci_low, xmax = ci_high), height = 0) +
   geom_point(size = 2.5,pch=21) +
+  scale_x_continuous(limits=c(-0.04,0.04))+
   scale_fill_manual(values = md$Color, breaks = md$Group) +
   labs(
-    x = "ABBA-BABA: D(camansi, mariannensis; cultivar, odoratissimus)",
+    x = "ABBA-BABA: D(odoratissimus, mariannensis; cultivar, camansi)",
     y = NULL
   ) +
   theme_bw(base_size = 11) +
@@ -636,11 +653,165 @@ p <- d_resg %>%
     panel.grid.major.y = element_blank(),
     panel.grid.minor = element_blank()
   )
+p
+
+ggsave('~/symlinks/pan/figures/20260707_Dstat_HART061_HART067_target_HART063.pdf',
+       p,height=4,width=5)
+
+```
+
+### "Early Gen" hybrid investigation
+
+Assess relative donor vs mariannensis ancestry using f stats with a focus on the ZZ3 ZZ7 ZZ9 samples. 
+
+* Computes D‑statistics to test whether each “target”  ZZ sample shares excess allele affinity with any donor relative to marianensis (odoratissimus as outgroup).
+* Summarizes all target–donor f4 results, merges metadata, and plots donor affinities. 
+
+```R
+setwd("/project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/08_plink")
+library(admixtools)
+library(tidyverse)
+
+prefix <- "Full"
+my_f2_dir <- "admix_f2"
+
+outgroup <- "HART061"      # odoratissimus
+marianensis <- "HART067"   # marianensis
+camansi <- "HART063"       # camansi
+
+questionable <- c("ZZ3", "ZZ7", "ZZ9")
+seeded_donors <- c(
+  "HART053", "HART046", "HART049", "HART050",
+  "H6", "HART033", "HART032", "HART038",
+  "HART030", "HART001", "HART069"
+)
+
+pops <- unique(c(outgroup, marianensis, camansi, questionable, seeded_donors))
+
+fam <- read_table(
+  paste0(prefix, ".fam"),
+  col_names = c("FID", "IID", "PAT", "MAT", "SEX", "PHENO"),
+  show_col_types = FALSE
+)
+
+fam %>%
+  mutate(FID = IID) %>%
+  write.table(
+    paste0(prefix, ".fam"),
+    col.names = FALSE,
+    row.names = FALSE,
+    quote = FALSE
+  )
+
+# # just once! 
+# extract_f2(
+#   prefix,
+#   my_f2_dir,
+#   pops = pops,
+#   auto_only = FALSE,
+#   maxmiss = 1,
+#   overwrite = TRUE
+# )
+
+f2_blocks <- f2_from_precomp(my_f2_dir, pops = pops)
+
+# sanity
+f4(
+  f2_blocks,
+  pop1 = outgroup,
+  pop2 = marianensis,
+  pop3 = camansi,
+  pop4 = "H6",
+  f4mode = FALSE
+)
+
+# marianensis self-anchor
+f4(
+  f2_blocks,
+  pop1 = outgroup,
+  pop2 = marianensis,
+  pop3 = marianensis,
+  pop4 = "H6",
+  f4mode = FALSE
+)
+
+# questionable test
+f4(
+  f2_blocks,
+  pop1 = outgroup,
+  pop2 = marianensis,
+  pop3 = "ZZ3",
+  pop4 = "H6",
+  f4mode = FALSE
+)
+# Test: D(outgroup, marianensis; target, donor)
+# est > 0 = target shares excess alleles with donor
+# est < 0 = marianensis shares excess alleles with donor
+
+donor_screen <- crossing(
+  questionable = questionable,
+  donor = seeded_donors
+) %>%
+  pmap_dfr(function(questionable, donor) {
+    f4(
+      f2_blocks,
+      pop1 = outgroup,
+      pop2 = marianensis,
+      pop3 = questionable,
+      pop4 = donor,
+      f4mode = FALSE
+    ) %>%
+      mutate(
+        questionable = questionable,
+        donor = donor,
+        ci_low = est - 1.96 * se,
+        ci_high = est + 1.96 * se,
+        abs_z = abs(z),
+        interpretation = case_when(
+          abs_z < 3 ~ "no_clear_excess",
+          est > 0 ~ "questionable_has_excess_donor_affinity",
+          est < 0 ~ "marianensis_has_excess_donor_affinity",
+          TRUE ~ "balanced"
+        )
+      )
+  }) %>%
+  arrange(questionable, desc(abs_z))
+donor_screen %>% group_by(questionable) %>% count(interpretation)
+donor_screen %>% filter(questionable == 'ZZ3' & pop4 == 'H6')
+write_tsv(donor_screen, "D_outgroup_marianensis_questionable_donor.tsv")
+
+md <- read_tsv("~/artocarpus_pangenome/samples.info", show_col_types = FALSE) %>%
+  dplyr::select(ID = Sample, Name, Group, Color) %>%
+  mutate(Shape = 21)
+
+donor_screen_g <- donor_screen %>%
+  left_join(md %>% rename(donor = ID, donor_group = Group, donor_color = Color), by = "donor") 
+
+p_donor <- donor_screen_g %>%
+  ggplot(aes(x = est, y = fct_reorder(donor, est), fill = donor_group)) +
+  geom_vline(xintercept = 0, linetype = 2) +
+  geom_errorbarh(aes(xmin = ci_low, xmax = ci_high), height = 0) +
+  geom_point(size = 2.5, pch = 21) +
+  facet_grid(~ questionable, scales = "free_y") +
+  scale_x_continuous(limits=c(-0.04,0.04), breaks = c(-0.03,0,0.03))+
+  scale_fill_manual(values = md$Color, breaks = md$Group) +
+  labs(
+    x = "D(odoratissimus, marianensis; target, donor)",
+    y = NULL,
+    fill = NULL
+  ) +
+  theme_bw(base_size = 11) +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+
+p_donor
 
 ggsave(
-  "D_HART063_HART067_cultivar_HART061.pdf",
-  p,
-  width = 6,
+  "~/symlinks/pan/figures/20260707_D_outgroup_marianensis_target_donor.pdf",
+  p_donor,
+  width = 7,
   height = 4.5
 )
 

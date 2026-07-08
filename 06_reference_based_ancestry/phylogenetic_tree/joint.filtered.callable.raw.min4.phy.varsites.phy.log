@@ -1,0 +1,165 @@
+IQ-TREE version 3.1.1 for Linux x86 64-bit built Apr  8 2026
+Developed by Bui Quang Minh, Thomas Wong, Nhan Ly-Trong, Huaiyan Ren
+Contributed by Lam-Tung Nguyen, Dominik Schrempf, Chris Bielow,
+Olga Chernomor, Michael Woodhams, Diep Thi Hoang, Heiko Schmidt
+
+Host:    ceres20-mem-10 (AVX512, FMA3, 1510 GB RAM)
+Command: iqtree --redo -keep-ident -T 48 -s /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy --seqtype DNA -m GTR+ASC -alrt 1000 -B 1000
+Seed:    427496 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Mon Jun 15 21:47:36 2026
+Kernel:  AVX+FMA - 48 threads (48 CPU cores detected)
+
+Reading alignment file /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy ... Phylip format detected
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 15.8541 secs using 17.83% CPU
+Alignment has 17 sequences with 15127674 columns, 345195 distinct patterns
+1868794 parsimony-informative, 13258880 singleton sites, 0 constant sites
+         Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.00579752 secs using 4290% CPU
+   1  H6         9.38%    failed      0.00%
+   2  HART001    2.91%    failed      0.00%
+   3  HART030    2.86%    failed      0.00%
+   4  HART032    2.96%    failed      0.00%
+   5  HART033    3.90%    failed      0.00%
+   6  HART038    2.99%    failed      0.00%
+   7  HART046   11.96%    failed      0.00%
+   8  HART049    9.60%    failed      0.00%
+   9  HART050    2.84%    failed      0.00%
+  10  HART053    9.51%    failed      0.00%
+  11  HART061    0.79%    failed      0.00%
+  12  HART063    0.01%    failed      0.00%
+  13  HART067    0.56%    failed      0.00%
+  14  HART069    2.91%    failed      0.00%
+  15  ZZ3        2.39%    failed      0.00%
+  16  ZZ7        1.22%    failed      0.00%
+  17  ZZ9        2.05%    failed      0.00%
+****  TOTAL      4.05%  17 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: minimal branch length is reduced to 0.000000006610 for long alignment
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 10.096 seconds
+Generating 1000 samples for ultrafast bootstrap (seed: 427496)...
+
+NOTE: 1507 MB RAM (1 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -59676748.371
+2. Current log-likelihood: -54579530.364
+3. Current log-likelihood: -54495292.634
+4. Current log-likelihood: -54488052.675
+5. Current log-likelihood: -54487246.148
+6. Current log-likelihood: -54487173.641
+7. Current log-likelihood: -54487160.198
+8. Current log-likelihood: -54487157.808
+9. Current log-likelihood: -54487152.821
+10. Current log-likelihood: -54487146.040
+11. Current log-likelihood: -54487143.594
+12. Current log-likelihood: -54487138.151
+13. Current log-likelihood: -54487134.426
+14. Current log-likelihood: -54487131.244
+15. Current log-likelihood: -54487128.078
+16. Current log-likelihood: -54487125.765
+17. Current log-likelihood: -54487125.369
+18. Current log-likelihood: -54487124.361
+19. Current log-likelihood: -54487123.640
+20. Current log-likelihood: -54487122.915
+21. Current log-likelihood: -54487122.501
+22. Current log-likelihood: -54487122.022
+23. Current log-likelihood: -54487121.713
+24. Current log-likelihood: -54487121.364
+25. Current log-likelihood: -54487121.219
+26. Current log-likelihood: -54487121.002
+Optimal log-likelihood: -54487120.904
+Rate parameters:  A-C: 0.99728  A-G: 5.24582  A-T: 1.35332  C-G: 0.90393  C-T: 5.25578  G-T: 1.00000
+Base frequencies:  A: 0.274  C: 0.226  G: 0.226  T: 0.274
+Parameters optimization took 26 rounds (5.742 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.0385464 secs using 1342% CPU
+Computing ML distances took 0.054311 sec (of wall-clock time) 1.133745 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 0.00415543 secs using 73.04% CPU
+Constructing RapidNJ tree: done in 0.0700967 secs
+Computing RapidNJ tree took 0.074339 sec (of wall-clock time) 0.003268 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -58759924.370
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 1477.133 second
+Computing log-likelihood of 98 initial trees ... 7.229 seconds
+Current best score: -54487120.904
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -54476374.549
+Iteration 10 / LogL: -54476464.134 / Time: 0h:26m:1s
+Iteration 20 / LogL: -54476852.403 / Time: 0h:26m:28s
+Finish initializing candidate tree set (2)
+Current best tree score: -54476374.549 / CPU time: 1540.558
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -54476418.740 / Time: 0h:26m:39s (1h:4m:45s left)
+Iteration 40 / LogL: -54476376.914 / Time: 0h:26m:49s (0h:41m:37s left)
+Iteration 50 / LogL: -54476502.808 / Time: 0h:27m:0s (0h:27m:53s left)
+Log-likelihood cutoff on original alignment: -54476539.188
+Iteration 60 / LogL: -54591709.230 / Time: 0h:27m:12s (0h:18m:45s left)
+Iteration 70 / LogL: -54476435.710 / Time: 0h:27m:25s (0h:12m:13s left)
+Iteration 80 / LogL: -54485715.691 / Time: 0h:27m:37s (0h:7m:17s left)
+Iteration 90 / LogL: -54476509.605 / Time: 0h:27m:48s (0h:3m:24s left)
+Iteration 100 / LogL: -54476595.613 / Time: 0h:27m:59s (0h:0m:16s left)
+Log-likelihood cutoff on original alignment: -54476539.188
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.995
+TREE SEARCH COMPLETED AFTER 102 ITERATIONS / Time: 0h:28m:0s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -54476374.549
+2. Current log-likelihood: -54476374.432
+3. Current log-likelihood: -54476374.348
+4. Current log-likelihood: -54476374.278
+5. Current log-likelihood: -54476374.243
+6. Current log-likelihood: -54476374.159
+7. Current log-likelihood: -54476374.112
+8. Current log-likelihood: -54476374.062
+9. Current log-likelihood: -54476374.044
+10. Current log-likelihood: -54476373.986
+11. Current log-likelihood: -54476373.959
+12. Current log-likelihood: -54476373.923
+Optimal log-likelihood: -54476373.912
+Rate parameters:  A-C: 0.99596  A-G: 5.25468  A-T: 1.35213  C-G: 0.90189  C-T: 5.26500  G-T: 1.00000
+Base frequencies:  A: 0.274  C: 0.226  G: 0.226  T: 0.274
+Parameters optimization took 12 rounds (1.666 sec)
+BEST SCORE FOUND : -54476373.912
+
+Testing tree branches by SH-like aLRT with 1000 replicates...
+13.663 sec.
+Creating bootstrap support values...
+Split supports printed to NEXUS file /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy.splits.nex
+Total tree length: 0.510
+
+Total number of iterations: 102
+CPU time used for tree search: 9097.364 sec (2h:31m:37s)
+Wall-clock time used for tree search: 1632.416 sec (0h:27m:12s)
+Total CPU time used: 10177.390 sec (2h:49m:37s)
+Total wall-clock time used: 1696.101 sec (0h:28m:16s)
+
+Computing bootstrap consensus tree...
+Reading input file /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy.splits.nex...
+17 taxa and 32 splits.
+Consensus tree written to /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy.contree
+Reading input trees file /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy.contree
+Log-likelihood of consensus tree: -54476373.912
+
+Analysis results written to: 
+  IQ-TREE report:                /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy.iqtree
+  Maximum-likelihood tree:       /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy.treefile
+  Likelihood distances:          /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy.splits.nex
+  Consensus tree:                /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy.contree
+  Screen log file:               /project/coffea_pangenome/Artocarpus/Pangenome_Paper/reference_based/10_tree/joint.filtered.callable.raw.min4.phy.varsites.phy.log
+
+Date and Time: Mon Jun 15 22:16:20 2026

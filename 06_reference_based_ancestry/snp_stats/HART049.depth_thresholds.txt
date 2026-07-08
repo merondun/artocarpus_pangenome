@@ -1,0 +1,1 @@
+Mean depth=26.25; callable depth range=[13,52] (MAPQ>=20)
